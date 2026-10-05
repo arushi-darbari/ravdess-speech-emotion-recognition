@@ -1,4 +1,4 @@
-# RAVDESS Speech Emotion Recognition — Model Comparison
+# RAVDESS Speech Emotion Recognition - Model Comparison
 
 A speaker-independent deep learning pipeline that classifies emotion
 (neutral, calm, happy, sad, angry, fear, disgust, surprise) from speech
@@ -6,11 +6,11 @@ audio, comparing five architectures on the same data and evaluation
 pipeline: **LSTM, 1D-CNN, CNN-LSTM, FNN, and VGG16 (transfer learning on
 log-Mel spectrograms)**.
 
-Dataset: [RAVDESS Emotional Speech Audio](https://www.kaggle.com/datasets/uwrfkaggler/ravdess-emotional-speech-audio) — 24 actors, 8 emotions, 1,440 clips.
+Dataset: [RAVDESS Emotional Speech Audio](https://www.kaggle.com/datasets/uwrfkaggler/ravdess-emotional-speech-audio) - 24 actors, 8 emotions, 1,440 clips.
 
 ## Why this is different from a typical SER notebook
 
-Most RAVDESS tutorials split the dataset by *recording*, not by *speaker* —
+Most RAVDESS tutorials split the dataset by *recording*, not by *speaker* -
 since each actor has multiple recordings, a random split lets the same
 voice appear in both train and test, inflating accuracy because the model
 partly learns to recognize the speaker instead of the emotion.
@@ -38,11 +38,11 @@ chance level = 12.5%):
 **VGG16 wins** because it's the only model operating on real
 time-frequency structure (spectrogram images), where 2D convolution is a
 well-motivated choice. **FNN beats CNN and LSTM** despite being the
-simplest architecture — the engineered feature vector (ZCR + RMS + MFCC
+simplest architecture - the engineered feature vector (ZCR + RMS + MFCC
 concatenated) isn't a real time series, so treating it as one (via Conv1D
 or LSTM) imposes structure that doesn't exist in the data. **The CNN
 collapsed entirely** (predicting one class almost every time, best
-checkpoint from epoch 1) — left in as an instructive negative result
+checkpoint from epoch 1) - left in as an instructive negative result
 rather than removed.
 
 ## Setup & run
@@ -53,7 +53,7 @@ export RAVDESS_ROOT=/path/to/ravdess-emotional-speech-audio  # optional, default
 ```
 
 Open `ravdess_speech_emotion_recognition.ipynb` and run all cells. GPU
-recommended, not required — falls back to CPU automatically.
+recommended, not required - falls back to CPU automatically.
 
 ## Acknowledgments
 
